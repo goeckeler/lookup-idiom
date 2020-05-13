@@ -20,7 +20,7 @@ class CalculatorTest
 
   @Test
   void shouldSupportMultiplication() {
-    assertEquals(4f, Calculator.calculate("*", 2f, 2f));
+    assertEquals(21f, Calculator.calculate("*", 3f, 7f));
   }
 
   @Test

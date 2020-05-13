@@ -1,22 +1,11 @@
 package demo;
 
+import java.util.Map;
+
 public class Calculator
 {
   public static double calculate(final String operator, final double a, final double b) {
-    switch (operator) {
-      case "+" :
-        return Lookup.operator(operator).calculate(a, b);
-      case "-" :
-        return a - b;
-      case "*" :
-        return a * b;
-      case "/" :
-        return a / b;
-      case "√" :
-        return Math.sqrt(a);
-      default :
-        throw new IllegalArgumentException(String.format("Operator '%s' is not supported.", operator));
-    }
+    return Lookup.operator(operator).calculate(a, b);
   }
 }
 
@@ -35,7 +24,15 @@ class Plus implements Operation
 
 class Lookup
 {
+  static final Map<String, Operation> lookup = Map.of("+", new Plus());
+
   static Operation operator(final String operator) {
-    return new Plus();
+    final Operation operation = lookup.get(operator);
+
+    if (operation == null) {
+      throw new IllegalArgumentException(String.format("Operator '%s' not supported.", operator));
+    }
+
+    return operation;
   }
 }
