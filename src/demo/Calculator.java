@@ -12,7 +12,15 @@ public class Calculator
 
 class Lookup
 {
-  static final Map<String, BinaryOperator<Double>> lookup = Map.of("+", (a, b) -> a + b);
+  // @formatter:off
+  static final Map<String, BinaryOperator<Double>> lookup = Map.of(
+    "+", (a, b) -> a + b,
+    "-", (a, b) -> a - b,
+    "*", (a, b) -> a * b,
+    "/", (a, b) -> (a / b),
+    "√", (a, b) -> Math.sqrt(a)
+  );
+  // @formatter:on
 
   static BinaryOperator<Double> operator(final String operator) {
     final BinaryOperator<Double> operation = lookup.get(operator);
