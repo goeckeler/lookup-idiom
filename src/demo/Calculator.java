@@ -10,17 +10,9 @@ public class Calculator
   }
 }
 
-class Plus implements BinaryOperator<Double>
-{
-  @Override
-  public Double apply(final Double a, final Double b) {
-    return a + b;
-  }
-}
-
 class Lookup
 {
-  static final Map<String, BinaryOperator<Double>> lookup = Map.of("+", new Plus());
+  static final Map<String, BinaryOperator<Double>> lookup = Map.of("+", (a, b) -> a + b);
 
   static BinaryOperator<Double> operator(final String operator) {
     final BinaryOperator<Double> operation = lookup.get(operator);
