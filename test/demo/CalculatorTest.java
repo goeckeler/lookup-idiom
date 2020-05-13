@@ -14,6 +14,26 @@ class CalculatorTest
   }
 
   @Test
+  void shouldSupportSubstraction() {
+    assertEquals(4f, Calculator.calculate("-", 7f, 3f));
+  }
+
+  @Test
+  void shouldSupportMultiplication() {
+    assertEquals(4f, Calculator.calculate("*", 2f, 2f));
+  }
+
+  @Test
+  void shouldSupportDivision() {
+    assertEquals(4f, Calculator.calculate("/", 12f, 3f));
+  }
+
+  @Test
+  void shouldSupportSquareRoot() {
+    assertEquals(4f, Calculator.calculate("√", 16f, 0f));
+  }
+
+  @Test
   void shouldFailOnUnsupportedOperator() {
     assertThrows(IllegalArgumentException.class, () -> {
       Calculator.calculate("?", 1f, 3f);
