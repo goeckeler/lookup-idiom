@@ -2,7 +2,7 @@ package demo;
 
 public class Calculator
 {
-  public double calculate(final String operator, final double a, final double b) {
+  public static double calculate(final String operator, final double a, final double b) {
     switch (operator) {
       case "+" :
         return a + b;
