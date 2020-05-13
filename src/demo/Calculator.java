@@ -5,7 +5,7 @@ public class Calculator
   public static double calculate(final String operator, final double a, final double b) {
     switch (operator) {
       case "+" :
-        return a + b;
+        return new Plus().calculate(a, b);
       case "-" :
         return a - b;
       case "*" :
@@ -17,5 +17,18 @@ public class Calculator
       default :
         throw new IllegalArgumentException(String.format("Operator '%s' is not supported.", operator));
     }
+  }
+}
+
+interface Operation
+{
+  double calculate(double a, double b);
+}
+
+class Plus implements Operation
+{
+  @Override
+  public double calculate(final double a, final double b) {
+    return a + b;
   }
 }
