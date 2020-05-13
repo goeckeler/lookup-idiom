@@ -5,7 +5,7 @@ public class Calculator
   public static double calculate(final String operator, final double a, final double b) {
     switch (operator) {
       case "+" :
-        return new Plus().calculate(a, b);
+        return Lookup.operator(operator).calculate(a, b);
       case "-" :
         return a - b;
       case "*" :
@@ -30,5 +30,12 @@ class Plus implements Operation
   @Override
   public double calculate(final double a, final double b) {
     return a + b;
+  }
+}
+
+class Lookup
+{
+  static Operation operator(final String operator) {
+    return new Plus();
   }
 }
